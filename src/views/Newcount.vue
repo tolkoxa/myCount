@@ -1,0 +1,124 @@
+<template>
+    <form class="main">
+        <h1 class="text">Новый счётчик</h1>
+        <label class="label" for="name">Название счётчика</label>
+        <input class="input" type="text" id="name" v-bind="name">
+        <label class="label" for="unit">Еденица измерения (л., кг, шт. и т.д.)</label>
+        <input class="input" type="text" id="unit" v-bind="unit">
+        <label class="label" for="step">Шаг (сколько за один раз)</label>
+        <input class="input" type="text" id="step" v-bind="step">
+        <label class="label" for="target">Цель (сколько хотелось бы)</label>
+        <input class="input" type="text" id="target" v-bind="target">
+        <div class="check-div">
+          <input type="checkbox" v-model="check" @change="() => check != check" id="positive">
+          <p class="check-text" v-if="check===true">&laquo;<span class="color-green">Положительный счётчик</span>&raquo;<br> (чем больше, тем лучше)</p> 
+          <p class="check-text" v-else>&laquo;<span class="color-red">Отрицательный счётчик</span>&raquo;<br>(чем больше, тем хуже)</p>
+        </div>
+        <router-link
+          tag="a"
+          class="button"
+          :to="{name: 'login'}"
+          :newcount_data="product">
+        <button class="btn" >Добавить</button>
+        <!-- <button class="btn" @click.prevent="loadMore">Добавить</button> -->
+        </router-link>
+    </form>
+</template>
+
+<script>
+export default {
+  // data: ()=> ({
+  //   check: true,
+  // }
+  data: ()=> {
+      check: true
+    return {
+      product: {id: 1, name: this.name, unit: this.unit, step: this.step}
+    }
+  }
+
+  // methods: {loadMore () {
+  //                     this.newCount.push({id: 1, name: name, unit: unit});
+  //                     console.log(this.newCount);
+  // }
+  // }
+}
+</script>
+
+<style lang="scss" scoped>
+.main {
+  margin: 0 auto;
+  padding: 25px;
+  box-sizing: border-box;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  padding: 0 0 0 0;
+  // width: 90%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 400;
+}
+
+.check-div {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 10px 0;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.input {
+  margin: 0 0 12px 0;
+  padding: 0 20px 0 20px;
+  width: 100%;
+  height: 37px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  border-color: #75b1f7;
+  &:focus{
+    background-color: #75b1f7;
+    color: #fff;
+  }
+}
+
+.check-text{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  padding: 0 0 0 10px;
+}
+
+.color-green {
+  color: green;
+}
+
+.color-red {
+  color:red;
+}
+
+.btn {
+    // margin-top: 30px;
+    width: 200px;
+    height: 45px;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    background-color: #2E87F0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+}
+</style>
