@@ -1,47 +1,46 @@
 <template>
-    <form class="main">
+    <div class="main" @submit.prevent="onSubmit">
         <h1 class="text">Новый счётчик</h1>
         <label class="label" for="name">Название счётчика</label>
-        <input class="input" type="text" id="name" v-bind="name">
+        <input class="input" type="text" id="name" v-model="name">
         <label class="label" for="unit">Еденица измерения (л., кг, шт. и т.д.)</label>
-        <input class="input" type="text" id="unit" v-bind="unit">
+        <input class="input" type="text" id="unit" v-model="unit">
         <label class="label" for="step">Шаг (сколько за один раз)</label>
-        <input class="input" type="text" id="step" v-bind="step">
+        <input class="input" type="text" id="step" v-model="step">
         <label class="label" for="target">Цель (сколько хотелось бы)</label>
-        <input class="input" type="text" id="target" v-bind="target">
-        <div class="check-div">
+        <input class="input" type="text" id="target" v-model="target">
+        <!-- <div class="check-div">
           <input type="checkbox" v-model="check" @change="() => check != check" id="positive">
           <p class="check-text" v-if="check===true">&laquo;<span class="color-green">Положительный счётчик</span>&raquo;<br> (чем больше, тем лучше)</p> 
           <p class="check-text" v-else>&laquo;<span class="color-red">Отрицательный счётчик</span>&raquo;<br>(чем больше, тем хуже)</p>
-        </div>
-        <router-link
-          tag="a"
-          class="button"
-          :to="{name: 'login'}"
-          :newcount_data="product">
-        <button class="btn" >Добавить</button>
-        <!-- <button class="btn" @click.prevent="loadMore">Добавить</button> -->
-        </router-link>
-    </form>
+        </div> -->
+        <button class="btn" @click="$emit('sendArr', this.newCountArr)">Добавить</button>
+    </div>
 </template>
 
 <script>
 export default {
-  // data: ()=> ({
-  //   check: true,
-  // }
-  data: ()=> {
-      check: true
+  data (){
     return {
-      product: {id: 1, name: this.name, unit: this.unit, step: this.step}
-    }
-  }
+      newCountArr: {}
+      }
+  },
+  
 
-  // methods: {loadMore () {
-  //                     this.newCount.push({id: 1, name: name, unit: unit});
-  //                     console.log(this.newCount);
-  // }
-  // }
+  methods: {
+    sendDataToParent(){
+      let newCountArr = {id: 1, name: this.name, unit: this.unit, step: this.step};
+      this.$emit('sendArr', newCountArr)
+    }
+    // onSubmit(){
+    //   console.log(`${this.name} --- ${this.unit} --- ${this.step} --- ${this.target} --- ${this.newCounter.length}`);
+    //   // console.log(this.newCounter.length);
+    //   console.log(newCounter.length);
+    //   // if (this.newCounter.length == 0) {
+        
+    //   // }
+    // }
+  }
 }
 </script>
 

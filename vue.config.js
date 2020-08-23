@@ -5,11 +5,11 @@ module.exports = {
         manifestOptions: {
             background_color: '#4A90E2'
         }
-    }
+    },
     css: {
         loaderOptions: {
             sass: {
-                prependData: '@import "@/assets/styles/styles.scss";'
+                prependData: '@import "@/assets/styles/style.scss";'
             }
         }
     }
