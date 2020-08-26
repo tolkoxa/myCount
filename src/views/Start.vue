@@ -6,7 +6,7 @@
     </div>
     <div v-else>
       <Newcount
-      v-on:sendArr="getArr"></Newcount>
+      v-on:send-arr="get-arr"></Newcount>
       {{ counts_all}}
     </div>
     <ButtonNewCount/>
@@ -15,8 +15,10 @@
 
 <script>
 import ButtonNewCount from '@/components/ButtonNewCount.vue'
+
 // import CountItem from '@/views/Countitem.vue'
 import Newcount from '@/views/Newcount.vue'
+
 export default {
   data() {
     return {
@@ -26,7 +28,7 @@ export default {
     ButtonNewCount, Newcount
   },
   methods: {
-    getArr(data){
+    getarr(data){
       console.log(data);
     }
   }

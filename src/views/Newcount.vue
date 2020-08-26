@@ -9,12 +9,7 @@
         <input class="input" type="text" id="step" v-model="step">
         <label class="label" for="target">Цель (сколько хотелось бы)</label>
         <input class="input" type="text" id="target" v-model="target">
-        <!-- <div class="check-div">
-          <input type="checkbox" v-model="check" @change="() => check != check" id="positive">
-          <p class="check-text" v-if="check===true">&laquo;<span class="color-green">Положительный счётчик</span>&raquo;<br> (чем больше, тем лучше)</p> 
-          <p class="check-text" v-else>&laquo;<span class="color-red">Отрицательный счётчик</span>&raquo;<br>(чем больше, тем хуже)</p>
-        </div> -->
-        <button class="btn" @click="$emit('sendArr', this.newCountArr)">Добавить</button>
+        <button class="btn" @click="$emit('send-arr', this.newCountArr)">Добавить</button>
     </div>
 </template>
 
